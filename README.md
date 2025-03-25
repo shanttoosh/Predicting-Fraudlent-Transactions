@@ -7,19 +7,22 @@
 4. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 5. [Model Building](#model-building)
 6. [Model Evaluation](#model-evaluation)
-7. [Hyperparameter Tuning](#hyperparameter-tuning)
-8. [Results](#results)
-9. [Conclusion](#conclusion)
-10. [Future Work](#future-work)
-11. [Dependencies](#dependencies)
-12. [Usage](#usage)
-13. [License](#license)
+7. [Feature Importance & Interpretability](#feature-importance--interpretability)
+8. [Fraud Prevention Strategies](#fraud-prevention-strategies)
+9. [Effectiveness of Prevention Measures](#effectiveness-of-prevention-measures)
+10. [Hyperparameter Tuning](#hyperparameter-tuning)
+11. [Results](#results)
+12. [Conclusion](#conclusion)
+13. [Future Work](#future-work)
+14. [Dependencies](#dependencies)
+15. [Usage](#usage)
+16. [License](#license)
 
 ## Introduction
 This project aims to predict fraudulent transactions using a machine learning approach. Fraud detection is vital for financial institutions to mitigate losses and protect customers. The project involves data preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
 
 ## Dataset
-- **Source:** (https://drive.usercontent.google.com/download?id=1VNpyNkGxHdskfdTNRSjjyNa5qC9u0JyV&export=download&authuser=0)
+- **Source:** [Download Dataset](https://drive.usercontent.google.com/download?id=1VNpyNkGxHdskfdTNRSjjyNa5qC9u0JyV&export=download&authuser=0)
 - **Description:** The dataset includes various features related to transactions, including amounts, balances, and identifiers.
 - **Target Variable:** `isFraud`, indicating whether a transaction is fraudulent.
 - **Columns:** Various numerical and categorical features, including transaction amounts, original balances, etc.
@@ -30,7 +33,10 @@ This project aims to predict fraudulent transactions using a machine learning ap
 2. **Outlier Detection and Treatment:**
    - Outliers were identified using boxplots.
    - Winsorization was applied to numerical features to cap outliers at 1% on both tails.
-3. **Feature Engineering:**
+3. **Multi-Collinearity:**
+   - Pearson correlation was used to identify highly correlated variables.
+   - Features with correlation >0.9 were removed to avoid redundancy.
+4. **Feature Engineering:**
    - Logarithmic features were created to handle skewness in numerical data.
    - Original features like `nameOrig` were dropped to focus on relevant numerical features.
 
@@ -61,6 +67,28 @@ The EDA section involves visualizing the distribution of key features, identifyi
 5. **Optimal Threshold:**
    - Defined an optimal threshold to balance precision and recall.
 
+## Feature Importance & Interpretability
+- **Key Predictive Factors:**
+  - Transaction amount
+  - Frequency of transactions
+  - Account balance before and after transaction
+  - Type of transaction (e.g., cash out, transfer)
+- **Why These Factors Matter:**
+  - Fraudsters often make large, unusual transactions.
+  - Sudden changes in balance can indicate unauthorized transactions.
+  - Certain transaction types (e.g., high-volume cash outs) are more prone to fraud.
+
+## Fraud Prevention Strategies
+- **Anomaly Detection Systems:** Implement AI-driven anomaly detection to flag suspicious activity in real time.
+- **Multi-Factor Authentication (MFA):** Require additional authentication for high-risk transactions.
+- **Transaction Limits:** Set transaction limits for new or unverified users.
+- **Behavior Analysis:** Monitor user behavior patterns to detect deviations.
+
+## Effectiveness of Prevention Measures
+- **A/B Testing:** Compare fraud detection rates before and after implementing new measures.
+- **False Positive Rate Analysis:** Ensure prevention measures do not flag too many legitimate transactions.
+- **User Feedback & Reports:** Track user complaints regarding blocked or unauthorized transactions.
+
 ## Hyperparameter Tuning
 1. **Parameter Distribution:**
    - Defined a parameter grid for the Random Forest Classifier, including hyperparameters such as `n_estimators`, `max_features`, `max_depth`, etc.
@@ -79,6 +107,7 @@ The Random Forest model effectively identified fraudulent transactions, providin
 - Experiment with other machine learning algorithms (e.g., XGBoost, LightGBM).
 - Incorporate additional features to improve model performance.
 - Explore deep learning techniques for more complex patterns in transaction data.
+- Implement real-time fraud detection using streaming data platforms.
 
 ## Dependencies
 - Python (version 3.x)
@@ -109,4 +138,4 @@ The Random Forest model effectively identified fraudulent transactions, providin
 This project is licensed under the MIT License.
 
 ## Connect with Me
-Feel free to connect with me on LinkedIn(https://www.linkedin.com/in/shanttoosh-v-470484289/) and follow my journey in data analytics and visualization!
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/shanttoosh-v-470484289/) and follow my journey in data analytics and visualization!
